@@ -43,7 +43,7 @@ const TreeList: React.FC<TreeListProps> = ({ user }) => {
         {trees.map((tree) => (
           <li key={tree.id}>
             {tree.name} - ${tree.price}
-            <button onClick={() => handleAddToCart(tree)}>添加到购物车</button>
+            <button onClick={() => handleAddToCart(tree)}>Add to Cart</button>
           </li>
         ))}
       </ul>

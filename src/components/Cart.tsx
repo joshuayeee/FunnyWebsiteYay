@@ -39,7 +39,7 @@ const Cart: React.FC<CartProps> = ({ user }) => {
         {cartItems.map((item) => (
           <li key={item.id}>
             {item.treeName} - ${item.price}
-            <button onClick={() => handleRemove(item.id)}>移除</button>
+            <button onClick={() => handleRemove(item.id)}>Remove</button>
           </li>
         ))}
       </ul>

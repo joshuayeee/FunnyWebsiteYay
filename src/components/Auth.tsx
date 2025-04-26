@@ -37,7 +37,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
 
   return (
     <div>
-      <h2>注册 / 登录</h2>
+      <h2>Register / Login</h2>
       <input
         placeholder="username"
         value={username}
@@ -54,8 +54,8 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button onClick={handleRegister}>注册</button>
-      <button onClick={handleLogin}>登录</button>
+      <button onClick={handleRegister}>Register</button>
+      <button onClick={handleLogin}>Login</button>
     </div>
   );
 };
