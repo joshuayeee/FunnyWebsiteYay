@@ -1,54 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { getTrees, addToCart } from "../api/api";
+import React from "react";
+import { useState } from "react";
 
-interface Tree {
-  id: string;
-  name: string;
-  price: number;
-}
+const trees = ["Oak Tree", "Pine Tree", "Maple Tree", "Cherry Blossom"];
 
-interface TreeListProps {
-  user: any;
-}
-
-const TreeList: React.FC<TreeListProps> = ({ user }) => {
-  const [trees, setTrees] = useState<Tree[]>([]);
-
-  useEffect(() => {
-    const fetchTrees = async () => {
-      const res = await getTrees();
-      setTrees(res.data);
-    };
-    fetchTrees();
-  }, []);
-
-  const handleAddToCart = async (tree: Tree) => {
-    try {
-      await addToCart({
-        userId: user.id,
-        treeId: tree.id,
-        treeName: tree.name,
-        price: tree.price,
-      });
-      alert("Added to cart");
-    } catch (err) {
-      console.error("Add failed", err);
-    }
-  };
-
+export default function TreeList({
+  addToCart,
+}: {
+  addToCart: (tree: string, directPurchase?: boolean) => void;
+}) {
   return (
     <div>
-      <h2>tree list</h2>
-      <ul>
-        {trees.map((tree) => (
-          <li key={tree.id}>
-            {tree.name} - ${tree.price}
-            <button onClick={() => handleAddToCart(tree)}>Add to Cart</button>
-          </li>
-        ))}
-      </ul>
+      <h2>Available Trees</h2>
+      {trees.map((tree, index) => (
+        <div key={index}>
+          <p>{tree}</p>
+          <button onClick={() => addToCart(tree)}>Add to Cart</button>
+          <button onClick={() => addToCart(tree, true)}>Direct Purchase</button>
+        </div>
+      ))}
     </div>
   );
-};
-
-export default TreeList;
+}

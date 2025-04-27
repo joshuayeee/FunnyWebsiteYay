@@ -1,57 +1,40 @@
-import { useState } from "react";
-import "./styles.css";
+import React, { useState } from "react";
+import CreateAccount from "./components/CreateAccount";
+import Login from "./components/Login";
+import TreeList from "./components/TreeList";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import Search from "./components/Search";
 
 export default function App() {
-  const [input, setInput] = useState("");
-  const [tasks, setTasks] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [cart, setCart] = useState<string[]>([]);
+  const [checkoutMode, setCheckoutMode] = useState(false);
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleSubmit = () => {
-    if (editIndex != null) {
-      const updateTasks = tasks.map((tasks, id) =>
-        id === editIndex ? input : tasks
-      );
-      setTasks(updateTasks);
-      setInput("");
-      setEditIndex(null);
-    } else {
-      setTasks([...tasks, input]);
-      setInput("");
+  const addToCart = (tree: string, directPurchase = false) => {
+    setCart((prev) => [...prev, tree]);
+    if (directPurchase) {
+      setCheckoutMode(true);
     }
   };
 
-  const handleEdit = (index) => {
-    setEditIndex(index);
-    setInput(tasks[index]);
+  const removeFromCart = (index: number) => {
+    setCart((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+  const clearCart = () => {
+    setCart([]);
+    setCheckoutMode(false);
   };
 
-  const filterTasks = tasks.filter((task) => task.includes(searchTerm));
   return (
     <div className="App">
-      <input value={input} onChange={(e) => handleChange(e)} />
-      <input value={searchTerm} onChange={(e) => handleSearch(e)} />
-      <button onClick={handleSubmit}>Submit</button>
-      {filterTasks.map((tasks, index) => (
-        <div key={index}>
-          <p>{tasks}</p>
-          <button
-            onClick={() => {
-              handleEdit(index);
-            }}
-          >
-            Edit
-          </button>
-        </div>
-      ))}
+      <h1>Tree Cheers 🌳</h1>
+      <CreateAccount />
+      <Login />
+      <Search />
+      <TreeList addToCart={addToCart} />
+      <Cart cartItems={cart} removeFromCart={removeFromCart} />
+      {checkoutMode && <Checkout cartItems={cart} clearCart={clearCart} />}
     </div>
   );
 }
