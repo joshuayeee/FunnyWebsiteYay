@@ -1,20 +1,21 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function CreateAccount() {
+interface CreateAccountProps {
+  onCreate: (username: string, password: string, email: string) => void;
+  onCancel: () => void;
+}
+
+export default function CreateAccount({ onCreate }: CreateAccountProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleCreateAccount = () => {
-    const accountData = { username, password, email };
-    localStorage.setItem('account', JSON.stringify(accountData));
-    alert("Account created successfully (saved locally)!");
+  const handleSubmit = () => {
+    onCreate(username, password, email);
   };
 
-
   return (
-    <div>
+    <div className="create-account">
       <h2>Create Account</h2>
       <input
         type="text"
@@ -34,7 +35,7 @@ export default function CreateAccount() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button onClick={handleCreateAccount}>Create Account</button>
+      <button onClick={handleSubmit}>Create</button>
     </div>
   );
 }

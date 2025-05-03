@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-export default function Login() {
+interface LoginProps {
+  onLogin: (username: string) => void;
+  onSwitchToCreate: () => void;
+}
+
+export default function Login({ onLogin, onSwitchToCreate }: LoginProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
 
   useEffect(() => {
     const storedAccounts = localStorage.getItem("accounts");
@@ -18,39 +22,31 @@ export default function Login() {
     }
   }, []);
 
-  const handleLogin = () => {
-    const storedAccounts = localStorage.getItem("accounts");
-    if (storedAccounts) {
-      const accounts = JSON.parse(storedAccounts) as { username: string; password: string }[];
-      const matchedAccount = accounts.find(
-        (account) => account.username === username && account.password === password
-      );
-      if (matchedAccount) {
-        alert(`Welcome, ${matchedAccount.username}! Login successful.`);
-      } else {
-        alert("Invalid username or password!");
-      }
+  const handleSubmit = () => {
+    if (username.trim()) {
+      onLogin(username);
     } else {
-      alert("No accounts found. Please refresh the page.");
+      alert("Please enter a username.");
     }
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       <input
         type="text"
         placeholder="Username"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={e => setUsername(e.target.value)}
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleSubmit}>Login</button>
+      <button onClick={onSwitchToCreate}>Create Account</button>
     </div>
   );
 }
