@@ -93,19 +93,48 @@ button:hover {
 }
 
 /* Tree list styling */
+.tree-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Tree card styles */
 .tree-card {
-  background-color: #edf2f7;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 1rem;
-  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.tree-card:hover {
+  transform: translateY(-5px);
 }
 
 .tree-card h3 {
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  color: #2c3e50;
 }
 
-.tree-card button {
-  margin-right: 0.5rem;
+.tree-card p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* Image styles */
+.tree-card img.tree-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  background-color: #f0f0f0; 
 }
 
 /* Search bar */
