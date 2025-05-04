@@ -64,10 +64,6 @@ npm install
 npm start
 The app will run on http://localhost:3000.
 
-🖼️ Adding Tree Images
-Place tree images in the public/images folder.
-
-
 User accounts are not persisted beyond browser refresh unless extended.
 
 Fake accounts like alice, bob, charlie are available by default.
