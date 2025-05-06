@@ -1,27 +1,25 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const trees = ["Oak Tree", "Pine Tree", "Maple Tree", "Cherry Blossom"];
+interface Props {
+  onSearch: (term: string) => void;
+}
 
-export default function Search() {
-  const [query, setQuery] = useState("");
+export default function Search({ onSearch }: Props) {
+  const [inputValue, setInputValue] = useState("");
 
-  const filteredTrees = trees.filter((tree) =>
-    tree.toLowerCase().includes(query.toLowerCase())
-  );
+  const handleSearchClick = () => {
+    onSearch(inputValue);
+  };
 
   return (
-    <div>
-      <h2>Search for Trees</h2>
+    <div className="search-bar">
       <input
         type="text"
-        placeholder="Enter tree name..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search for Trees"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
       />
-      {filteredTrees.map((tree, index) => (
-        <p key={index}>{tree}</p>
-      ))}
+      <button onClick={handleSearchClick}>Search</button>
     </div>
   );
 }

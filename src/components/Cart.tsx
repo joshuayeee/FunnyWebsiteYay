@@ -1,11 +1,16 @@
 import React from "react";
+
+interface CartProps {
+  cartItems: string[];
+  removeFromCart: (index: number) => void;
+  onCheckout: (address: string, creditCard: string) => void;
+}
+
 export default function Cart({
   cartItems,
   removeFromCart,
-}: {
-  cartItems: string[];
-  removeFromCart: (index: number) => void;
-}) {
+  onCheckout,
+}: CartProps) {
   return (
     <div>
       <h2>Shopping Cart</h2>
@@ -19,6 +24,9 @@ export default function Cart({
           </div>
         ))
       )}
+      <button onClick={() => onCheckout("Some address", "4111-1111-1111-1111")}>
+        Proceed to Checkout
+      </button>
     </div>
   );
 }
