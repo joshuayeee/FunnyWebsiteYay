@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CreateAccount from "./components/CreateAccount";
-import Login from "./components/Login";
-import TreeList from "./components/TreeList";
-import Cart from "./components/Cart";
-import Checkout from "./components/Checkout";
-import Search from "./components/Search";
+import CreateAccount from "/project/workspace/src/components/CreateAccount.tsx";
+import Login from "/project/workspace/src/components/Login.tsx";
+import TreeList from "/project/workspace/src/components/TreeList.tsx";
+import Cart from "/project/workspace/src/components/Cart.tsx";
+import Checkout from "/project/workspace/src/components/Checkout.tsx";
+import Search from "/project/workspace/src/components/Search.tsx";
 
 export default function App() {
   const [cart, setCart] = useState<string[]>([]);
