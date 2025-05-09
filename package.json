@@ -25,7 +25,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "-d build",
+    "deploy": "netlify -d build",
     "start": "react-scripts start",
     "build": "vite build",
     "test": "react-scripts test --env=jsdom",
