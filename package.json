@@ -24,6 +24,8 @@
     "vite": "^6.3.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "react-scripts start",
     "build": "vite build",
     "test": "react-scripts test --env=jsdom",
