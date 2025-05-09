@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FunnyWebsiteYay/static/css/main.db53d8b0.css",
+    "main.js": "/FunnyWebsiteYay/static/js/main.9c624e00.js",
+    "index.html": "/FunnyWebsiteYay/index.html",
+    "main.db53d8b0.css.map": "/FunnyWebsiteYay/static/css/main.db53d8b0.css.map",
+    "main.9c624e00.js.map": "/FunnyWebsiteYay/static/js/main.9c624e00.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db53d8b0.css",
+    "static/js/main.9c624e00.js"
+  ]
+}
