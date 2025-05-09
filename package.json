@@ -25,7 +25,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "netlify -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "vite build",
     "test": "react-scripts test --env=jsdom",
