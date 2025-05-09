@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TreeList from "./TreeList";
-import Cart from "./Cart";
 import Search from "./Search";
 
 export default function HomePage({
